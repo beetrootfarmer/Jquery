@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상위 요소 선택자</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1 class="p">상위 요소 선택자</h1>
+    <section>
+        <div>
+            <p class="txt1">내용1</p>
+        </div>
+    </section>
+    <section>
+
+        <div>
+            <p class="txt2">내용2</p>
+        </div>
+    </section>
+    <script>
+        $(function() {
+           //상위 요소 전체 선택
+            $(".tXt1").parents().css({
+                "border": "2px solid green",
+                "background-color":"light yellow"
+            });
+            //상위 요소 중 div선택 
+            $(".tXt2").parents("div").css({
+                "border": "2px solid blue",
+                "background-color":"skyblue"
+            });
+        });
+    </script>
+</body>
+</html>
