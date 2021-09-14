@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contains()contents()has()not()end() 선택자</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- contents 가장가까운 하위요소
+    has 해당 요소를 가지고 있는 요소
+    not ~제외요소 이외의 요소
+    end 필터링되기 이전의 요소 -->
+    <div id="outer_wrap">
+        <h1>contains()contents()has()not()end() 선택자</h1>
+        <section id="inner_1">
+                <h1>contains()contents()has()</h1>
+                <p><span>내용1</span></p>
+                <p><strong>내용2</strong></p>
+                <p><span>내용3</span></p>
+            </section>]
+            <section id="inner_2">
+                <h1>not()end()</h1>
+                <p>내용4</p>
+                <p>내용5</p>
+                <p>내용6</p>
+        </section>
+    </div>
+    <script>
+        $(function() {
+            //내용1을 포함하고 있는 요소를 선택 - 첫 번째 p요소 선택
+            $("#inner_1 p : contains(내용1)").css({
+                "background-color" : "yellow"
+            });
+            //strong요소를 가지고 있는 요소 선택 - 두 번째 p요소 선택
+            $("#inner_1 p : has(strong)").css({
+                "background-color" : "skyblue"
+            });
+            //outer_wrap의 바로 아래 하위 요소 선택 - h1, section#inner_1, section_inner_2 선택
+            $("#outer_wrap.contents()").css({
+                "border" : "1px dashed blue"
+            });
+            // 첫 번째 요소가 아닌 요소 선택 -내용5, 내용6 p요소 선택
+            $("#inner_2 p").not(":first").css({
+                "background-color" : "green"
+            });
+            //인덱스 선택자 취소하고 처음 지정한 선택자로 요소 선택 - 내용4, 내용5 내용6 p 요소 선택
+            $("#inner_2 p").eq(2).end().css({
+                "background-color" : "red"
+            });
+        })
+    </script>
+</body>
+</html>
