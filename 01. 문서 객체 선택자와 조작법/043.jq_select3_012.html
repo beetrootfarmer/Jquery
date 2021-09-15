@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replaceAll()/replaceWith()메소드</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <section class="box1">
+        <h2>박스1</h2>
+        <div>박스1내용1</div>
+        <div>박스1내용2</div>
+    </section>
+    <section class="box2">
+        <h2>박스2</h2>
+        <div>박스2내용1</div>
+        <div>박스2내용2</div>
+    </section>
+    <script>
+        $(function() {
+            //h2요소를 h3요소로 교체
+            
+           $("h2").replaceWith("<h3>replaceWith()</h3>");
+           // div 요소를 p 요소로 교체
+           $("<p>replaceAll()</p>").replaceAll("div");
+        });
+    </script>
+    
+</body>
+</html>

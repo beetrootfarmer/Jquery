@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ready() load()</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <p><img src="http://place-hold.it/300X300" class="img1" alt=""></p>
+    <script>
+    $(function() {
+        //$(document).ready HTML 문서가 모두 로드 완료된 후 실행
+        // 외부 연결 파일은 로드된 상태가 아님
+        $(document).ready(function(){
+            //외부 연결 이미지가 로드된 상태가 아니어서 height = 0
+            var he1 = $(".img1").height();
+            console.log("ready : "+he1);
+        });
+        // $(window).on("load") 외부 연결 파일 모두 로드 완료된 후 실행
+        $(window).on("load",function(){
+            //외부 연결 이미지가 로드된 상태이므로 height = 300
+            var he2 = $(".img1").height();
+            console.log("ready : "+he1);
+        });
+        
+        });
+    </script>
+</body>
+</html>
