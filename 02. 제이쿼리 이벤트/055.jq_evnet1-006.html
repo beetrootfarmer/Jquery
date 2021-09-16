@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>focus()/ blur() / focusin()/ focusout()</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+   <h1>focus() / blur()</h1>
+   <form action="#" id="frm_1">
+       <p>
+           <label for="user_id_1"></label>
+           <input type="text" name="user_id_1" id="user_id_1">
+        </p>
+       <p>
+           <label for="user_name_1"></label>
+           <input type="text" name="user_name_1" id="user_name_1">
+        </p>
+   </form>
+   <h1>focusin() / focusout() </h1>
+   <form action="#" id="frm_2">
+       <p>
+           <label for="user_id_2"></label>
+           <input type="text" name="user_id_2" id="user_id_2">
+        </p>
+       <p>
+           <label for="user_name_2"></label>
+           <input type="text" name="user_name_2" id="user_name_2">
+        </p>
+   </form>
+    <script>
+        $(function() {
+            $("#user_id_1, #user_name_1 ").on({
+                //user_id_1, user_name_1 요소에 focus가 갔을 때 배경색 핑크
+                "focus" : function() { $(this).css({"background-color" :"pink"});
+                //user_id_1, user_name_1 요소에 focus가 빠져나갔을 때 배경색 흰색
+                }, "blur" : function() { $(this).css({"background-color" :"#fff"});
+            }
+        });
+            $("#frm_2").on({
+                //frm2 요소에 focus가 갔을 때 배경색 오렌지
+                    "focusin" : function() { $(this).css({"background-color" :"orange"});
+                //frm2 요소에 focus가 빠져나갔을 때 배경색 흰색
+                }, "focusout" : function() { $(this).css({"background-color" :"#fff"});
+                }
+            });
+            $("user_id_1").focus();
+    })
+    </script>
+</body>
+</html>
