@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delay()/ stop() 메소드</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <style>
+        p {
+            width: 110px;
+            text-align: center;
+        }
+        .txt1 {
+            background-color: grey;
+        }
+        .txt2 {
+            background-color: greenyellow;
+        }
+        .txt3 {
+            background-color: yellowgreen;
+        }
+        .txt4 {
+            background-color: green;
+        }
+        .txt5 {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+   <p class="txt1">효과1</p>
+   <p class="txt2">효과2 <br>delay(3000)</p>
+   <p><button class="btn1">50px 전진</button></p>
+   <p class="txt3">효과3</p>
+   <p class="txt4">효과4</p>
+   <p class="txt5">효과5</p>
+    
+   <script>
+       $(function() {
+           //.txt1 요소 오른쪽으로 300px이동하는 애니메이션 효과
+           $(".txt1").animate({
+               marginLeft : "300px"
+           },1000);
+
+           //.txt2 요소 3초 후에 오른쪽으로 300px이동하는 애니메이션 효과
+           $(".txt2").delay(3000).animate({
+               marginLeft : "300px"
+           },1000);
+
+           // btn1 클릭시 동작
+           $(".btn1").click(moveElement);
+
+           function moveElement() {
+               // .txt3요소 50px씩 오른쪽으로 이동하는 애니메이션 효과
+               $(".txt3").delay(3000).animate({
+                   marginLeft : "+=50px"
+               }, 800);
+
+               // .txt4요소 50px씩 오른쪽으로 이동하는 애니메이션 효과
+               $(".txt4").delay(3000).animate({
+                   marginLeft : "+=50px"
+               }, 800). animate ({
+                   fontSize :"30px"
+               }, 800);
+               // .txt4요소 애니메이션 효과 제거
+               $(".txt4").stop();
+
+               // .txt5요소 50px씩 오른쪽으로 이동하는 애니메이션 효과
+               // 폰트 사이즈 변경 효과는 stop(true true)메소드로 중지된다
+               $(".txt5").delay(3000).animate({
+                   marginLeft : "+=50px"
+               }, 800). animate ({
+                   fontSize :"30px"
+               }, 800);;
+               // .txt5요소 애니메이션 효과 중자- 아동할 때 css 적용한 것 처럼 이동
+               $(".txt4").stop(true,true);
+
+
+           }
+       })
+   </script>
+</body>
+</html>
