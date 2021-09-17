@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>faq</title>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="css/faq.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            list-style: none;
+        }
+        body {
+            font: 14px Malgun Gothic,"맑은고딕",sans-serif;
+            color: #555;
+        }
+        h1 {
+            font-size:1em;
+            margin-bottom:10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>질문 제목1</h1>
+	<div class="faq">
+		<ul>
+			<li>
+				<p><button>Q1. 무슨 과일 사갈까용?</button></p>
+				<div>
+					<div class="cont">바나나랑 아오리사과 사다주세요</div>
+				</div>
+			</li>
+			<li>
+					<p><button>Q2. 자용?</button></p>
+					<div>
+						<div class="cont">답변 내용2</div>
+					</div>
+			</li>
+		</ul>
+	</div>
+	<h1>질문 제목2</h1>
+	<div class="faq">
+		<ul>
+			<li>
+				<p><button>Q1. 용?</button></p>
+				<div>
+					<div class="cont">답변 내용1</div>
+				</div>
+			</li>
+			<li>
+				<p><button>Q2. 용?</button></p>
+				<div>
+					<div class="cont">답변 내용2</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+    <script>
+        $(function(){
+			// fnq플러그인 제작
+			$.fn.extend({
+				faq:function(){
+					// this에는 button담김
+					var ts = $(this);
+					$.each(ts,function(i,o){
+						// button이나 .faq 클릭했을 때 실행되는 동작
+					$("button", o).on("click", tabmenu);
+
+					function tabmenu() {
+						// button의 부모요소인 p 요소의 다음 요소 선택
+						//hidden 속성 검색해서 true나 false로 리턴
+						//다른 질문 선택 시 동작
+						if($(this).parent().next().is(":hidden")){
+							//답변 내용과 .faq 요소에서 visible이 되어있는 요소 숨김 처리
+							$("li>div:visible", o).hide();
+							//button 의 부모요소인 p 요소의 다음 요소 선택 후 답변 내용 표출 처리
+							$(this).parent().next().show();
+						// 지금 선택되어있는 질문 다시 클릭 시 동작
+						}else{
+							//답변 내용과 .faq 요소에서 visible 되어있는 요소 숨김 처리
+							$("li>div:visible",o).hide();
+						}
+					}
+				});
+			}
+		});
+		$(".faq").faq();
+	});
+    </script>
+</body>
+</html>
